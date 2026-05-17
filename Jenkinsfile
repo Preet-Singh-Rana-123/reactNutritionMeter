@@ -38,21 +38,9 @@ pipeline {
             }
         }
 
-        stage('Deploy to Kubernetes') {
+        stage('List Docker Images') {
             steps {
-                sh 'kubectl apply -f k8s/'
-            }
-        }
-
-        stage('Restart Deployment') {
-            steps {
-                sh 'kubectl rollout restart deployment nutrition-meter'
-            }
-        }
-
-        stage('Verify Pods') {
-            steps {
-                sh 'kubectl get pods'
+                sh 'docker images'
             }
         }
     }
