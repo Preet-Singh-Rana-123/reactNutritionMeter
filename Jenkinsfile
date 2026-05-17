@@ -10,7 +10,8 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/Preet-Singh-Rana-123/reactNutritionMeter.git'
+                git branch: 'main',
+                    url: 'https://github.com/Preet-Singh-Rana-123/reactNutritionMeter.git'
             }
         }
 
