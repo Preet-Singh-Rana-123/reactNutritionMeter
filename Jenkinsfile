@@ -17,7 +17,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t preet0001/nutrition-meter:v1 .'
+                sh 'docker build -t $IMAGE_NAME:v1 .'
             }
         }
 
