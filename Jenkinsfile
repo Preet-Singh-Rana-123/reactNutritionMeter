@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $IMAGE_NAME:v1 .'
+                sh 'docker build -t $IMAGE_NAME:latest .'
             }
         }
 
@@ -34,13 +34,25 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                sh 'docker push $IMAGE_NAME:v1'
+                sh 'docker push $IMAGE_NAME:latest'
             }
         }
 
-        stage('List Docker Images') {
+        stage('Deploy to Kubernetes') {
             steps {
-                sh 'docker images'
+                sh 'kubectl apply -f k8s/'
+            }
+        }
+
+        stage('Restart Deployment') {
+            steps {
+                sh 'kubectl rollout restart deployment nutrition-meter'
+            }
+        }
+
+        stage('Verify Pods') {
+            steps {
+                sh 'kubectl get pods'
             }
         }
     }

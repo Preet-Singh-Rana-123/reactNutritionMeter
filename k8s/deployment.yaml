@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: nutrition-meter
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: nutrition-meter
+
+  template:
+    metadata:
+      labels:
+        app: nutrition-meter
+
+    spec:
+      containers:
+        - name: nutrition-meter
+
+          image: preet0001/nutrition-meter:latest
+
+          ports:
+            - containerPort: 80
