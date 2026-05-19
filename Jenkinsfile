@@ -46,7 +46,10 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh 'kubectl rollout restart deployment nutrition-meter'
+                sh '''
+                KUBECONFIG=/root/.kube/jenkins-config \
+                kubectl rollout restart deployment nutrition-meter
+                '''
             }
         }
 
