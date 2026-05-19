@@ -54,9 +54,12 @@ pipeline {
         }
 
         stage('Verify Pods') {
-            steps {
-                sh 'kubectl get pods'
-            }
-        }
+    steps {
+        sh '''
+        KUBECONFIG=/root/.kube/jenkins-config \
+        kubectl get pods
+        '''
+    }
+}
     }
 }
