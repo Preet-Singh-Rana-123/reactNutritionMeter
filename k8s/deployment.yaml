@@ -20,6 +20,8 @@ spec:
       containers:
         - name: nutrition-meter
 
+          imagePullPolicy: Always
+
           image: preet0001/nutrition-meter:latest
 
           ports:
