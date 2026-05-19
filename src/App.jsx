@@ -215,7 +215,7 @@ const itemCards = itemList.map(item => {
 
   return (
     <>
-      <h1 className='flex justify-center m-[1.5rem] font-bold text-4xl '>Nutrition Meter</h1>
+      <h1 className='flex justify-center m-[1.5rem] font-bold text-4xl '>React Nutrition Meter</h1>
       <section>
         <main className="flex flex-col w-full justify-center items-center ">
             <div className="grid grid-cols-2 gap-4 ">
