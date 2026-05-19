@@ -43,5 +43,17 @@ pipeline {
                 sh 'docker images'
             }
         }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh 'kubectl rollout restart deployment nutrition-meter'
+            }
+        }
+
+        stage('Verify Pods') {
+            steps {
+                sh 'kubectl get pods'
+            }
+        }
     }
 }
